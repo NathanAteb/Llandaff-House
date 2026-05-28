@@ -97,7 +97,7 @@ export function SiteHeader() {
             ))}
             <a
               href="tel:01554821689"
-              onClick={handleNavClick}
+              onClick={() => setMenuOpen(false)}
               className="inline-flex items-center gap-2 font-sans font-semibold text-[17px] text-teal-700 no-underline px-3.5 py-3 mt-2 rounded-full bg-teal-50 hover:bg-teal-100 justify-center"
             >
               <Phone className="w-4 h-4" strokeWidth={2} />
