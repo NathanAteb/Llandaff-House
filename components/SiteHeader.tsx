@@ -82,8 +82,14 @@ export function SiteHeader() {
       </div>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden absolute top-[84px] left-0 right-0 bg-white/90 backdrop-blur-xl border-b border-ink-100 shadow-lg">
+      <div
+        className={`md:hidden absolute top-[84px] left-0 right-0 bg-white/90 backdrop-blur-xl border-b shadow-lg grid transition-all duration-300 ease-out ${
+          menuOpen
+            ? "grid-rows-[1fr] opacity-100 border-ink-100"
+            : "grid-rows-[0fr] opacity-0 border-transparent pointer-events-none"
+        }`}
+      >
+        <div className="overflow-hidden">
           <nav className="flex flex-col px-6 py-4 gap-1" aria-label="Mobile">
             {navLinks.map((link) => (
               <a
@@ -105,7 +111,7 @@ export function SiteHeader() {
             </a>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }
