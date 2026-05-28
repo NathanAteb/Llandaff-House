@@ -19,8 +19,8 @@ export function Hero() {
         }}
       />
 
-      {/* CIW badge */}
-      <div className="absolute z-[2] top-8 right-8 max-sm:hidden bg-white text-ink-900 px-4 py-3 rounded-full font-sans text-[15px] font-semibold inline-flex items-center gap-2 shadow-lg">
+      {/* CIW badge — desktop only (top-right) */}
+      <div className="absolute z-[2] top-8 right-8 hidden sm:inline-flex bg-white text-ink-900 px-4 py-3 rounded-full font-sans text-[15px] font-semibold items-center gap-2 shadow-lg">
         <ShieldCheck className="w-4 h-4 text-teal-600" strokeWidth={2} />
         CIW inspected · December 2024
       </div>
@@ -50,6 +50,11 @@ export function Hero() {
             <Phone className="w-[18px] h-[18px]" strokeWidth={1.75} />
             Call us · 01554 821689
           </LinkButton>
+          {/* CIW badge — mobile only (inline) */}
+          <div className="sm:hidden inline-flex bg-white/20 backdrop-blur-sm text-white px-4 py-3 rounded-full font-sans text-[15px] font-semibold items-center gap-2">
+            <ShieldCheck className="w-4 h-4" strokeWidth={2} />
+            CIW inspected · December 2024
+          </div>
         </div>
       </div>
     </section>
