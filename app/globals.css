@@ -1,0 +1,123 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/* ===== Tailwind v4 theme ===== */
+@theme inline {
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  --color-teal-50:  #EAF4F0;
+  --color-teal-100: #CFE5DD;
+  --color-teal-200: #A8D2C5;
+  --color-teal-300: #7FB8AB;
+  --color-teal-400: #5FA294;
+  --color-teal-500: #3E8576;
+  --color-teal-600: #2F6B5E;
+  --color-teal-700: #234F45;
+  --color-teal-800: #18372F;
+
+  --color-sage-100: #E8EFE6;
+  --color-sage-300: #B7C9A8;
+
+  --color-pink-100: #F4E7E2;
+  --color-pink-300: #D8B3A8;
+
+  --color-cream-50:  #FFFFFF;
+  --color-cream-100: #F4F7F6;
+  --color-cream-200: #E6ECEA;
+
+  --color-ink-100: #E2E7E6;
+  --color-ink-300: #A8B1AF;
+  --color-ink-500: #6B7775;
+  --color-ink-700: #3E4A48;
+  --color-ink-900: #1F2A28;
+
+  --color-warning: #E0B872;
+  --color-danger:  #D38078;
+
+  --font-serif: "Lora", "Georgia", "Times New Roman", serif;
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --shadow-xs: 0 1px 2px rgba(31, 42, 40, 0.05);
+  --shadow-sm: 0 2px 8px rgba(31, 42, 40, 0.06), 0 1px 2px rgba(31, 42, 40, 0.04);
+  --shadow-md: 0 8px 22px rgba(31, 42, 40, 0.08), 0 2px 4px rgba(31, 42, 40, 0.04);
+  --shadow-lg: 0 20px 44px rgba(31, 42, 40, 0.10), 0 4px 8px rgba(31, 42, 40, 0.05);
+}
+
+/* ===== Base / reset ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  color: #3E4A48;
+  background: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  color: #1F2A28;
+  font-weight: 500;
+  margin: 0 0 0.4em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h1 { font-size: 54px; }
+h2 { font-size: 42px; }
+h3 { font-size: 27px; }
+h4 { font-size: 22px; font-weight: 600; }
+
+p {
+  margin: 0 0 1em;
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
+a:not([class]) {
+  color: #2F6B5E;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 120ms ease;
+}
+a:not([class]):hover { color: #234F45; text-decoration-thickness: 2px; }
+a:focus-visible {
+  outline: 2px solid #2F6B5E;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.3;
+  color: #1F2A28;
+  border-left: 3px solid #7FB8AB;
+  padding: 8px 0 8px 24px;
+  margin: 24px 0;
+}
+blockquote cite {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 15px;
+  color: #6B7775;
+  letter-spacing: 0.04em;
+}
+
+::selection { background: #CFE5DD; color: #1F2A28; }

@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  body{padding:28px;background:var(--bg);display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+</style></head><body>
+<div class="field">
+  <label for="n">Your name</label>
+  <input id="n" class="input" type="text" value="Rhian Davies">
+</div>
+<div class="field">
+  <label for="p">Phone <span class="req">*</span></label>
+  <input id="p" class="input" type="tel" placeholder="01554 821689">
+</div>
+<div class="field">
+  <label for="r">Relationship</label>
+  <select id="r" class="select">
+    <option>Family member</option>
+    <option>Health professional</option>
+    <option>Other</option>
+  </select>
+</div>
+<div class="field">
+  <label for="e">Email</label>
+  <input id="e" class="input" type="email" placeholder="you@example.co.uk">
+</div>
+<div class="field" style="grid-column:1/-1;">
+  <label for="m">Message</label>
+  <textarea id="m" class="textarea" placeholder="We'd love to hear from you — even just to say hello."></textarea>
+</div>
+</body></html>

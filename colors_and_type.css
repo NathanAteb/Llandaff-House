@@ -1,0 +1,240 @@
+/* ============================================================
+   LLANDAFF HOUSE — COLORS & TYPE
+   Single source of truth for the Llandaff House Care Home brand.
+   Palette pulled from the existing teal sign on the front of the
+   building (Llanelli, Carmarthenshire) and the sage / dusky pink
+   furnishings inside the home itself.
+   ============================================================ */
+
+/* Google Fonts — flagged substitution. No locally-licensed faces
+   were provided; Lora + Inter were chosen for warmth + clarity.
+   See README → CONTENT FUNDAMENTALS for rationale. */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ---------- BRAND ----------
+     The teal from the front-of-building sign is the single
+     ownable mark. Everything else supports it. */
+  --teal-50:  #EAF4F0;
+  --teal-100: #CFE5DD;
+  --teal-200: #A8D2C5;
+  --teal-300: #7FB8AB;   /* brand teal (matches signage) */
+  --teal-400: #5FA294;
+  --teal-500: #3E8576;
+  --teal-600: #2F6B5E;   /* hover / link / focus ring */
+  --teal-700: #234F45;
+  --teal-800: #18372F;
+
+  /* ---------- INTERIOR PALETTE ----------
+     Kept only as on-page reference — NOT for UI. The palette
+     leans white + teal; sage/pink may be used as captioned
+     accents (e.g. behind a quote) at most. */
+  --sage-100: #E8EFE6;
+  --sage-300: #B7C9A8;   /* wingback green */
+
+  --pink-100: #F4E7E2;
+  --pink-300: #D8B3A8;   /* dusky pink */
+
+  /* ---------- NEUTRALS ----------
+     Clean white + cool, teal-tinted greys. Body text stays a
+     soft charcoal (never pure black) for older-reader comfort. */
+  --cream-50:  #FFFFFF;  /* page background — pure white */
+  --cream-100: #F4F7F6;  /* subtle tint, slight teal cast */
+  --cream-200: #E6ECEA;  /* divider tint */
+  --bone:      #FFFFFF;  /* surface above page */
+
+  --ink-900: #1F2A28;    /* primary body text — slight teal cast */
+  --ink-700: #3E4A48;    /* secondary text */
+  --ink-500: #6B7775;    /* muted / captions */
+  --ink-300: #A8B1AF;    /* placeholder / disabled */
+  --ink-100: #E2E7E6;    /* hairline borders */
+
+  /* ---------- SEMANTIC ----------
+     Softened pastel-ish tints that sit calmly next to the teal. */
+  --success: #6FB29F;    /* close to teal-300 */
+  --warning: #E0B872;
+  --danger:  #D38078;
+  --info:    #8AA8C0;
+
+  /* ---------- SURFACE / FG TOKENS ---------- */
+  --bg:           var(--cream-50);
+  --bg-elevated:  var(--bone);
+  --bg-tinted:    var(--cream-100);
+  --bg-sage:      var(--sage-100);
+
+  --fg-1: var(--ink-900);   /* headings, primary copy */
+  --fg-2: var(--ink-700);   /* body */
+  --fg-3: var(--ink-500);   /* meta, captions */
+  --fg-inverse: var(--cream-50);
+
+  --brand:       var(--teal-300);
+  --brand-deep:  var(--teal-600);
+  --brand-soft:  var(--teal-50);
+
+  --border:        var(--ink-100);
+  --border-strong: #D6CDB6;
+  --focus-ring:    var(--teal-600);
+
+  /* ---------- TYPE ---------- */
+  --font-serif: "Lora", "Georgia", "Times New Roman", serif;
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Type scale — minimum body 17px (audience skews 50–70).
+     1.250 (major third) ratio above 17px. */
+  --text-xs:   13px;
+  --text-sm:   15px;
+  --text-base: 17px;     /* never below this for body */
+  --text-lg:   19px;
+  --text-xl:   22px;
+  --text-2xl:  27px;
+  --text-3xl:  34px;
+  --text-4xl:  42px;
+  --text-5xl:  54px;
+  --text-6xl:  68px;
+
+  --leading-tight:  1.15;
+  --leading-snug:   1.3;
+  --leading-normal: 1.55;
+  --leading-loose:  1.75;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.14em;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---------- RADII ---------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- ELEVATION ----------
+     Soft, low-contrast shadows. Nothing dramatic — care homes
+     should feel calm, not "app-y". */
+  --shadow-xs: 0 1px 2px rgba(31, 42, 40, 0.05);
+  --shadow-sm: 0 2px 8px rgba(31, 42, 40, 0.06), 0 1px 2px rgba(31, 42, 40, 0.04);
+  --shadow-md: 0 8px 22px rgba(31, 42, 40, 0.08), 0 2px 4px rgba(31, 42, 40, 0.04);
+  --shadow-lg: 0 20px 44px rgba(31, 42, 40, 0.10), 0 4px 8px rgba(31, 42, 40, 0.05);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  /* ---------- LAYOUT ---------- */
+  --container: 1200px;
+  --container-narrow: 800px;
+  --header-h: 84px;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENTS
+   Apply these as plain element styles when you want the
+   default Llandaff House voice.
+   ============================================================ */
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg-2);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  color: var(--fg-1);
+  font-weight: 500;
+  margin: 0 0 0.4em;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--text-5xl); font-weight: 500; }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); font-weight: 600; }
+h5 { font-size: var(--text-lg); font-weight: 600; }
+
+p {
+  margin: 0 0 1em;
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
+a:where(:not([class])) {
+  color: var(--brand-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 120ms ease;
+}
+a:where(:not([class])):hover { color: var(--teal-700); text-decoration-thickness: 2px; }
+a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+small, .caption {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+.lede {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--fg-1);
+}
+
+blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--fg-1);
+  border-left: 3px solid var(--brand);
+  padding: var(--space-2) 0 var(--space-2) var(--space-5);
+  margin: var(--space-5) 0;
+}
+blockquote cite {
+  display: block;
+  margin-top: var(--space-3);
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+  letter-spacing: var(--tracking-wide);
+}
+
+::selection { background: var(--teal-100); color: var(--ink-900); }

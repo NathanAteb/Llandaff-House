@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{padding:24px;background:var(--bg);}
+  .head{font-family:var(--font-sans);font-size:12px;font-weight:600;color:var(--fg-3);letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .sw{aspect-ratio:1/1.05;border-radius:var(--radius-sm);padding:12px;font-family:var(--font-sans);font-size:11px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink-900);border:1px solid var(--ink-100);}
+  .sw.dark{color:#fff;border-color:transparent;}
+  .sw b{font-weight:600;font-size:12px;}
+  .sw .hex{font-feature-settings:"tnum";opacity:.85;}
+  .accent-note{margin-top:18px;display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-style:italic;font-size:13px;color:var(--fg-3);}
+  .accent-note .chip{width:18px;height:18px;border-radius:50%;border:1px solid var(--ink-100);}
+</style></head><body>
+<p class="head">The palette — white &amp; brand teal</p>
+<div class="row">
+  <div class="sw" style="background:#FFFFFF;"><b>White</b><span class="hex">#FFFFFF</span></div>
+  <div class="sw" style="background:var(--teal-50);"><b>Teal 50<br><small style="font-weight:400">tint</small></b><span class="hex">#EAF4F0</span></div>
+  <div class="sw" style="background:var(--teal-300);"><b>Teal 300<br><small style="font-weight:400">brand</small></b><span class="hex">#7FB8AB</span></div>
+  <div class="sw dark" style="background:var(--teal-600);"><b>Teal 600<br><small style="font-weight:400">deep</small></b><span class="hex">#2F6B5E</span></div>
+</div>
+<div class="accent-note">
+  <span class="chip" style="background:var(--sage-300);"></span>
+  <span class="chip" style="background:var(--pink-300);"></span>
+  Sage &amp; dusky pink reserved for the building itself — never for UI.
+</div>
+</body></html>

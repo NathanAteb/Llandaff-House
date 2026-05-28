@@ -1,0 +1,18 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{padding:32px;background:var(--bg);}
+  .row{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;text-align:center;}
+  .box{background:var(--teal-100);border:1px solid var(--teal-200);height:64px;display:flex;align-items:center;justify-content:center;font-family:var(--font-sans);font-size:12px;font-weight:600;color:var(--teal-700);}
+  .name{font-family:var(--font-sans);font-size:11px;color:var(--fg-3);letter-spacing:.06em;text-transform:uppercase;margin-top:8px;}
+</style></head><body>
+<div class="row">
+  <div><div class="box" style="border-radius:var(--radius-xs);">4</div><div class="name">xs</div></div>
+  <div><div class="box" style="border-radius:var(--radius-sm);">8</div><div class="name">sm</div></div>
+  <div><div class="box" style="border-radius:var(--radius-md);">12</div><div class="name">md</div></div>
+  <div><div class="box" style="border-radius:var(--radius-lg);">18</div><div class="name">lg</div></div>
+  <div><div class="box" style="border-radius:var(--radius-xl);">28</div><div class="name">xl</div></div>
+  <div><div class="box" style="border-radius:var(--radius-pill);">pill</div><div class="name">pill</div></div>
+</div>
+</body></html>

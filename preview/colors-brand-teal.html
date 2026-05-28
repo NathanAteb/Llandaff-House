@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{padding:24px;background:var(--bg);}
+  .row{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;}
+  .swatch{aspect-ratio:1/1.1;border-radius:var(--radius-sm);display:flex;flex-direction:column;justify-content:space-between;padding:10px;font-family:var(--font-sans);font-size:11px;color:var(--ink-900);}
+  .swatch.dark{color:var(--cream-50);}
+  .swatch b{font-weight:600;font-size:12px;}
+  .swatch .hex{font-feature-settings:"tnum";opacity:.85;}
+  .label{font-family:var(--font-sans);font-size:12px;font-weight:600;color:var(--fg-3);letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;}
+</style></head><body>
+<p class="label">Teal — brand scale</p>
+<div class="row">
+  <div class="swatch" style="background:var(--teal-50);"><b>50</b><span class="hex">#EAF4F0</span></div>
+  <div class="swatch" style="background:var(--teal-100);"><b>100</b><span class="hex">#CFE5DD</span></div>
+  <div class="swatch" style="background:var(--teal-200);"><b>200</b><span class="hex">#A8D2C5</span></div>
+  <div class="swatch" style="background:var(--teal-300);"><b>300<br><small style="font-weight:400">brand</small></b><span class="hex">#7FB8AB</span></div>
+  <div class="swatch dark" style="background:var(--teal-400);"><b>400</b><span class="hex">#5FA294</span></div>
+  <div class="swatch dark" style="background:var(--teal-500);"><b>500</b><span class="hex">#3E8576</span></div>
+  <div class="swatch dark" style="background:var(--teal-600);"><b>600<br><small style="font-weight:400">deep</small></b><span class="hex">#2F6B5E</span></div>
+  <div class="swatch dark" style="background:var(--teal-700);"><b>700</b><span class="hex">#234F45</span></div>
+  <div class="swatch dark" style="background:var(--teal-800);"><b>800</b><span class="hex">#18372F</span></div>
+</div>
+</body></html>

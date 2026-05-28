@@ -1,0 +1,27 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../kit.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body{padding:32px;background:var(--bg);display:flex;flex-direction:column;gap:24px;align-items:flex-start;}
+  .group{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .label{font-family:var(--font-sans);font-size:11px;color:var(--fg-3);letter-spacing:.1em;text-transform:uppercase;width:90px;}
+</style></head><body>
+<div class="group">
+  <div class="label">Primary</div>
+  <a class="btn btn--primary"><i data-lucide="calendar" class="icon"></i>Arrange a visit</a>
+  <a class="btn btn--primary">Talk to us about fees</a>
+</div>
+<div class="group">
+  <div class="label">Secondary</div>
+  <a class="btn btn--secondary"><i data-lucide="phone" class="icon"></i>01554 821689</a>
+  <a class="btn btn--secondary">Read the CIW report</a>
+</div>
+<div class="group">
+  <div class="label">Ghost</div>
+  <a class="btn btn--ghost">Learn more <i data-lucide="arrow-right" class="icon"></i></a>
+</div>
+<script>lucide.createIcons();</script>
+</body></html>

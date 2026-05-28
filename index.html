@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Llandaff House Care Home · Llangennech, Llanelli</title>
+<meta name="description" content="A safe, comfortable residential and dementia care home in the heart of Llangennech, near Llanelli. 21 single rooms, beautiful garden, kind staff. Caring since 1991.">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="kit.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  /* ===== Page-local styles (everything else is tokens / kit) ===== */
+
+  /* Smooth anchor scroll, accounting for sticky header */
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 640px;
+    display: flex;
+    align-items: flex-end;
+    background: #2a2a26 url("assets/photos/patio.jpeg") center/cover no-repeat;
+    color: var(--cream-50);
+    overflow: hidden;
+  }
+  .hero::before {
+    content:""; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(31,42,40,0.50) 0%, rgba(31,42,40,0.18) 32%, rgba(31,42,40,0.18) 50%, rgba(31,42,40,0.78) 100%);
+  }
+  .hero__inner {
+    position: relative; z-index: 1;
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-9) var(--space-5) var(--space-8);
+  }
+  .hero__eyebrow {
+    color: var(--cream-50);
+    margin-bottom: var(--space-3);
+    text-shadow: 0 1px 2px rgba(31,42,40,0.35);
+  }
+  .hero h1 {
+    color: var(--cream-50);
+    font-size: clamp(36px, 5.4vw, 68px);
+    font-weight: 500;
+    line-height: 1.06;
+    max-width: 16ch;
+    margin: 0 0 var(--space-5);
+  }
+  .hero p.lede {
+    color: rgba(255,252,245,0.92);
+    font-style: normal;
+    font-family: var(--font-sans);
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+    max-width: 44ch;
+    margin: 0 0 var(--space-6);
+  }
+  .hero__ctas { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+  .hero .btn--secondary {
+    background: rgba(255,252,245,0.08);
+    color: var(--cream-50);
+    border-color: rgba(255,252,245,0.5);
+  }
+  .hero .btn--secondary:hover { background: rgba(255,252,245,0.16); }
+
+  /* Floating CIW badge in hero corner */
+  .hero__badge {
+    position: absolute; z-index: 2;
+    top: var(--space-6); right: var(--space-6);
+    background: rgba(255,252,245,0.95);
+    color: var(--ink-900);
+    padding: 12px 16px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(2px);
+  }
+  .hero__badge svg { width: 16px; height: 16px; color: var(--teal-600); stroke-width: 2; }
+  @media (max-width: 640px) {
+    .hero { min-height: 560px; }
+    .hero__badge { display: none; }
+  }
+
+  /* ===== Section header pattern ===== */
+  .section-head { max-width: 760px; margin-bottom: var(--space-7); }
+  .section-head .eyebrow { display:block; margin-bottom: var(--space-3); }
+  .section-head h2 { margin: 0 0 var(--space-3); }
+  .section-head p { font-size: var(--text-lg); color: var(--fg-2); }
+
+  /* ===== About / welcome ===== */
+  .welcome {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+  .welcome p { font-size: var(--text-lg); }
+  .welcome .photo { aspect-ratio: 4/5; }
+  .facts-grid {
+    margin-top: var(--space-7);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+  @media (max-width: 860px) {
+    .welcome { grid-template-columns: 1fr; }
+    .welcome .photo { aspect-ratio: 4/3; }
+    .facts-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .facts-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Our care ===== */
+  .care-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+  @media (max-width: 860px) { .care-grid { grid-template-columns: 1fr; } }
+
+  /* ===== Life with us — photo collage + copy ===== */
+  .life {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+  .life__copy blockquote { margin-top: 0; }
+  .life__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--space-3);
+    aspect-ratio: 1/1;
+  }
+  .life__grid .photo { height: 100%; }
+  .life__grid .photo:nth-child(1) { grid-row: 1 / span 2; }
+  .highlights {
+    margin-top: var(--space-7);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4) var(--space-6);
+    padding: var(--space-6);
+    background: var(--bg-elevated);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-md);
+  }
+  .highlights li {
+    list-style: none;
+    display: flex; align-items: flex-start; gap: 12px;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--fg-1);
+    line-height: 1.4;
+  }
+  .highlights li svg { width: 20px; height: 20px; flex: 0 0 auto; color: var(--teal-600); margin-top: 2px; stroke-width: 2; }
+  .highlights ul { padding: 0; margin: 0; display: contents; }
+  @media (max-width: 860px) {
+    .life { grid-template-columns: 1fr; }
+    .highlights { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .highlights { grid-template-columns: 1fr; }
+  }
+
+  /* ===== CIW / Inspection ===== */
+  .ciw {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    padding: var(--space-7) var(--space-7);
+    background: var(--bg-elevated);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .ciw blockquote { font-size: var(--text-2xl); margin: 0; border-color: var(--teal-600); }
+  .ciw__meta { display: flex; flex-direction: column; gap: var(--space-4); }
+  .ciw__rating {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 18px;
+    background: var(--teal-50);
+    border: 1px solid var(--teal-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+  }
+  .ciw__rating strong { font-size: var(--text-2xl); color: var(--teal-700); display: block; line-height: 1; }
+  .ciw__rating span { color: var(--fg-2); font-size: var(--text-sm); }
+  .ciw__rating .stars { display: inline-flex; gap: 2px; color: var(--warning); }
+  .ciw__rating .stars svg { width: 18px; height: 18px; fill: var(--warning); stroke: var(--warning); }
+  @media (max-width: 860px) {
+    .ciw { grid-template-columns: 1fr; padding: var(--space-6); }
+    .ciw blockquote { font-size: var(--text-xl); }
+  }
+
+  /* ===== Fees ===== */
+  .fees {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+  .fees__numbers {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .fee-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: var(--space-4) var(--space-5);
+    background: var(--bg-elevated);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+  }
+  .fee-row strong { font-family: var(--font-serif); font-size: var(--text-2xl); color: var(--fg-1); font-weight: 500; }
+  .fee-row span { color: var(--fg-2); }
+  @media (max-width: 860px) { .fees { grid-template-columns: 1fr; } }
+
+  /* ===== Annual return ===== */
+  .docs {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .doc-card {
+    display: flex; align-items: center; gap: var(--space-4);
+    padding: var(--space-5);
+    background: var(--bg-elevated);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--fg-1);
+    transition: border-color 140ms, box-shadow 140ms;
+  }
+  .doc-card:hover { border-color: var(--teal-300); box-shadow: var(--shadow-md); color: var(--fg-1); }
+  .doc-card__icon {
+    width: 52px; height: 52px; flex: 0 0 auto;
+    background: var(--teal-50);
+    color: var(--teal-700);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .doc-card__icon svg { width: 26px; height: 26px; stroke-width: 1.5; }
+  .doc-card__body { flex: 1; }
+  .doc-card__body strong { display: block; font-family: var(--font-sans); font-size: var(--text-base); font-weight: 600; }
+  .doc-card__body small { color: var(--fg-3); font-size: var(--text-sm); }
+  .doc-card__arrow { color: var(--fg-3); }
+  @media (max-width: 860px) { .docs { grid-template-columns: 1fr; } }
+
+  /* ===== Contact ===== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-8);
+  }
+  .contact-info { display: flex; flex-direction: column; gap: var(--space-5); }
+  .contact-line {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--fg-1);
+    line-height: 1.4;
+  }
+  .contact-line svg { width: 22px; height: 22px; color: var(--teal-600); flex: 0 0 auto; margin-top: 2px; stroke-width: 1.75; }
+  .contact-line a { color: var(--fg-1); text-decoration: none; }
+  .contact-line a:hover { color: var(--brand-deep); }
+  .map {
+    height: 220px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--ink-100);
+    background:
+      radial-gradient(circle at 30% 40%, var(--sage-100), transparent 50%),
+      radial-gradient(circle at 70% 60%, var(--teal-50), transparent 60%),
+      var(--cream-100);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .map__pin {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    background: var(--bone);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--fg-1);
+    box-shadow: var(--shadow-sm);
+  }
+  .map__pin svg { width: 16px; height: 16px; color: var(--teal-600); stroke-width: 2; }
+  .form {
+    background: var(--bg-elevated);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+  .form .field--full { grid-column: 1 / -1; }
+  .form__submit { grid-column: 1 / -1; display: flex; justify-content: flex-end; }
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .form { grid-template-columns: 1fr; padding: var(--space-5); }
+  }
+
+  /* Toast confirmation for form */
+  .form__success {
+    grid-column: 1 / -1;
+    display: none;
+    padding: var(--space-4) var(--space-5);
+    background: var(--teal-50);
+    color: var(--teal-700);
+    border: 1px solid var(--teal-200);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+  }
+  .form.is-sent .form__success { display: flex; align-items: center; gap: 10px; }
+  .form.is-sent .form__fields { display: none; }
+  .form.is-sent .form__submit { display: none; }
+
+  /* ===== Footer extras ===== */
+  .footer-contact { display: flex; flex-direction: column; gap: 4px; }
+</style>
+</head>
+<body>
+
+<!-- =============== HEADER =============== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="#top" aria-label="Llandaff House — home">
+      <span class="wordmark__plate">
+        <span class="wordmark__plate-name">
+          <small>Cathedral Care</small>
+          Llandaff House
+        </span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#care">Our care</a>
+      <a href="#life">Life with us</a>
+      <a href="#inspection">Inspection</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="site-header__phone" href="tel:01554821689">
+      <i data-lucide="phone"></i>01554 821689
+    </a>
+  </div>
+</header>
+
+<!-- =============== HERO =============== -->
+<section class="hero" id="top">
+  <div class="hero__badge">
+    <i data-lucide="shield-check"></i>
+    CIW inspected · December 2024
+  </div>
+  <div class="hero__inner">
+    <span class="eyebrow hero__eyebrow">A home in Llangennech, since 1991</span>
+    <h1>A safe, comfortable home in&nbsp;the heart of the village.</h1>
+    <p class="lede">Residential and dementia care for 21 residents, delivered with kindness, dignity and respect.</p>
+    <div class="hero__ctas">
+      <a class="btn btn--primary" href="#contact"><i data-lucide="calendar" class="icon"></i>Arrange a visit</a>
+      <a class="btn btn--secondary" href="tel:01554821689"><i data-lucide="phone" class="icon"></i>Call us · 01554 821689</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== ABOUT =============== -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Welcome</span>
+      <h2>Truly your home — in a Welsh village we love.</h2>
+    </div>
+
+    <div class="welcome">
+      <div>
+        <p>Llandaff House sits in Llangennech, a small village in the Llanelli area of Carmarthenshire. The village has a lot to offer our residents — local shops, a chemist, restaurants, a lively community centre with cafe and library, a park with bowling, and the rugby club at the end of Mwrwg Road where everyone is always welcome.</p>
+        <p>We have both Church and Chapels nearby, and a minister visits Llandaff House monthly for services. We would like every resident to truly think of Llandaff House as their home — and when they are coming towards the end of life, to be reassured we will do everything we possibly can to maintain their choices, dignity and respect.</p>
+      </div>
+      <div class="photo">
+        <img src="assets/photos/exterior.jpeg" alt="The front of Llandaff House on Mwrwg Road, with the teal sign and a blue summer sky.">
+      </div>
+    </div>
+
+    <div class="facts-grid">
+      <div class="fact"><span class="fact__icon"><i data-lucide="home"></i></span><div class="fact__text"><strong>21 single rooms</strong><small>8 with en-suite</small></div></div>
+      <div class="fact"><span class="fact__icon"><i data-lucide="flower-2"></i></span><div class="fact__text"><strong>Garden &amp; patio</strong><small>Bistro tables in the sun</small></div></div>
+      <div class="fact"><span class="fact__icon"><i data-lucide="map-pin"></i></span><div class="fact__text"><strong>2 minutes from the M4</strong><small>Easy to visit, any day</small></div></div>
+      <div class="fact"><span class="fact__icon"><i data-lucide="cat"></i></span><div class="fact__text"><strong>Own furniture &amp; pets</strong><small>Bring what makes home, home</small></div></div>
+      <div class="fact"><span class="fact__icon"><i data-lucide="users"></i></span><div class="fact__text"><strong>Older persons, 65+</strong><small>A quiet, settled community</small></div></div>
+      <div class="fact"><span class="fact__icon"><i data-lucide="calendar-heart"></i></span><div class="fact__text"><strong>Caring since 1991</strong><small>Family-run, Cathedral Care Ltd</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== OUR CARE =============== -->
+<section class="section section--tinted" id="care">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Our care</span>
+      <h2>Adapted to each person, every day.</h2>
+      <p>We support residents through change — physical, emotional, cognitive — while keeping their independence and identity at the centre of everything we do.</p>
+    </div>
+
+    <div class="care-grid">
+      <div class="card card--feature">
+        <span class="card__icon"><i data-lucide="heart-handshake"></i></span>
+        <h3 class="card__title">Residential care</h3>
+        <p class="card__body">Our residents are supported to maintain as independent a life as they physically, emotionally and mentally can. We adapt our service around them — never the other way round.</p>
+      </div>
+      <div class="card card--feature">
+        <span class="card__icon"><i data-lucide="brain"></i></span>
+        <h3 class="card__title">Dementia care</h3>
+        <p class="card__body">We support residents with dementia of varying stages. With joint support from visiting professionals, we also care for Parkinson's, Diabetes, Cancer, heart conditions, arthritis and more.</p>
+      </div>
+      <div class="card card--feature">
+        <span class="card__icon"><i data-lucide="hand-helping"></i></span>
+        <h3 class="card__title">Equipment &amp; support</h3>
+        <p class="card__body">We have a variety of equipment to support physical challenges — hoists, slide sheets, and Sara Steady — and work closely with visiting health professionals to meet every need.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== LIFE WITH US =============== -->
+<section class="section" id="life">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Life with us</span>
+      <h2>Spa days on Tuesday, a chef in the kitchen, a garden in the sun.</h2>
+    </div>
+
+    <div class="life">
+      <div class="life__grid">
+        <div class="photo"><img src="assets/photos/conservatory.jpeg" alt="The conservatory in afternoon sun, with the dining table set and garden visible through the doors."></div>
+        <div class="photo"><img src="assets/photos/lounge.jpeg" alt="The main lounge, with sage and dusky-pink wingback chairs arranged around the TV."></div>
+        <div class="photo"><img src="assets/photos/bedroom.jpeg" alt="A single bedroom with sage-green walls, floral bedding and a window looking out to the garden."></div>
+      </div>
+      <div class="life__copy">
+        <blockquote>
+          Our Activities Co-ordinator plans a monthly programme of activities and events — reminiscence groups (especially rewarding for residents with dementia), art, cooking, quizzes, games and puzzles, spa days, and visiting entertainers.
+        </blockquote>
+        <p>Our hairdresser visits every Tuesday as part of our weekly spa day, and our activities co-ordinator ensures residents are pampered with foot spas, manicures and make-up for those who'd like to take part. A chiropodist visits every 6–8 weeks.</p>
+      </div>
+    </div>
+
+    <ul class="highlights">
+      <li><i data-lucide="brush"></i>Weekly spa day · every Tuesday</li>
+      <li><i data-lucide="scissors"></i>Hairdresser visits weekly</li>
+      <li><i data-lucide="footprints"></i>Chiropodist every 6–8 weeks</li>
+      <li><i data-lucide="church"></i>Monthly minister services</li>
+      <li><i data-lucide="calendar-heart"></i>Daily activities programme</li>
+      <li><i data-lucide="utensils"></i>Freshly prepared meals by our chef</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =============== INSPECTION =============== -->
+<section class="section section--sage" id="inspection">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Care Inspectorate Wales</span>
+      <h2>Inspected, and proud to share.</h2>
+    </div>
+
+    <div class="ciw">
+      <blockquote>
+        "The environment was safe, secure and well-maintained. People spoke positively about the care they receive, describing staff as nice and noting they receive kind and caring support."
+        <cite>— Care Inspectorate Wales, December 2024</cite>
+      </blockquote>
+      <div class="ciw__meta">
+        <div class="ciw__rating">
+          <i data-lucide="utensils" style="color:var(--teal-700);width:24px;height:24px;"></i>
+          <div>
+            <strong>5 / 5</strong>
+            <span>Food Hygiene Rating · Very Good</span>
+          </div>
+        </div>
+        <div class="ciw__rating">
+          <i data-lucide="shield-check" style="color:var(--teal-700);width:24px;height:24px;"></i>
+          <div>
+            <strong>SIN-00009093-CGLK</strong>
+            <span>CIW registration · <a href="https://www.careinspectorate.wales/service/SIN-00009093-CGLK" target="_blank" rel="noopener">read the full report</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== FEES =============== -->
+<section class="section" id="fees">
+  <div class="container container--narrow">
+    <div class="fees">
+      <div>
+        <span class="eyebrow">Fees &amp; funding</span>
+        <h2 style="margin-top:12px;">Plain, honest pricing.</h2>
+        <p>Local authority funded placements are accepted with no top-up required. We're happy to talk through your individual circumstances — just give us a ring.</p>
+        <a class="btn btn--primary" href="#contact" style="margin-top:8px;">
+          <i data-lucide="message-circle" class="icon"></i>
+          Talk to us about fees
+        </a>
+      </div>
+      <div class="fees__numbers">
+        <div class="fee-row"><span>Weekly fee · from</span><strong>£688.51</strong></div>
+        <div class="fee-row"><span>Weekly fee · to</span><strong>£726.07</strong></div>
+        <div class="fee-row" style="background:var(--teal-50);border-color:var(--teal-200);"><span style="color:var(--teal-700);">Local authority placements</span><strong style="color:var(--teal-700);font-size:var(--text-lg);">Accepted</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== ANNUAL RETURN =============== -->
+<section class="section section--tinted" id="documents">
+  <div class="container">
+    <div class="docs">
+      <div>
+        <span class="eyebrow">Annual return &amp; compliance</span>
+        <h2 style="margin-top:12px;">Published here each year.</h2>
+        <p>Our annual return is published on this page every year, as required by Care Inspectorate Wales. The most recent return is below; older returns are available on request.</p>
+      </div>
+      <a class="doc-card" href="#" aria-label="Download the 2025–26 annual return as PDF">
+        <span class="doc-card__icon"><i data-lucide="file-text"></i></span>
+        <span class="doc-card__body">
+          <strong>2025–26 Annual Return</strong>
+          <small>PDF · placeholder</small>
+        </span>
+        <span class="doc-card__arrow"><i data-lucide="download"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACT =============== -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Contact</span>
+      <h2>We welcome visits — give us a ring.</h2>
+      <p>Pop in any day that suits you. We'd love to show you round, put the kettle on, and answer anything that's on your mind.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-line">
+          <i data-lucide="phone"></i>
+          <div><strong style="display:block;font-weight:600;">01554 821689</strong>
+            <small style="color:var(--fg-3);">Mrs Rhian Siddell-Owen, Manager</small></div>
+        </div>
+        <div class="contact-line">
+          <i data-lucide="map-pin"></i>
+          <div>6 Mwrwg Road<br>Llangennech, Llanelli<br>SA14 8UA</div>
+        </div>
+        <div class="contact-line">
+          <i data-lucide="mail"></i>
+          <div><a href="mailto:hello@llandaffhouse.co.uk">hello@llandaffhouse.co.uk</a></div>
+        </div>
+        <div class="map" aria-label="Map placeholder showing the location of Llandaff House">
+          <span class="map__pin"><i data-lucide="map-pin"></i>6 Mwrwg Road, Llangennech</span>
+        </div>
+      </div>
+
+      <form class="form" id="contact-form" onsubmit="event.preventDefault(); this.classList.add('is-sent');">
+        <div class="form__fields" style="display:contents;">
+          <div class="field"><label for="cn">Your name <span class="req">*</span></label><input id="cn" class="input" type="text" required></div>
+          <div class="field"><label for="cp">Phone <span class="req">*</span></label><input id="cp" class="input" type="tel" required placeholder="01554 821689"></div>
+          <div class="field"><label for="ce">Email</label><input id="ce" class="input" type="email" placeholder="you@example.co.uk"></div>
+          <div class="field"><label for="cr">You are a…</label>
+            <select id="cr" class="select">
+              <option>Family member</option>
+              <option>Health professional</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field field--full"><label for="cm">Message</label><textarea id="cm" class="textarea" placeholder="Tell us a little about your situation — we'll ring you back."></textarea></div>
+        </div>
+        <div class="form__success">
+          <i data-lucide="check-circle"></i>
+          Thank you — we'll be in touch within one working day.
+        </div>
+        <div class="form__submit">
+          <button type="submit" class="btn btn--primary">Send message <i data-lucide="arrow-right" class="icon"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =============== FOOTER =============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="wordmark" href="#top" style="margin-bottom:16px;display:inline-flex;">
+          <span class="wordmark__plate">
+            <span class="wordmark__plate-name">
+              <small>Cathedral Care</small>
+              Llandaff House
+            </span>
+          </span>
+        </a>
+        <p style="margin:14px 0 0;color:var(--cream-100);opacity:0.7;font-size:var(--text-sm);max-width:32ch;">A safe, comfortable home in the heart of Llangennech — caring since 1991.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Visit us</h4>
+        <p style="margin:0;">6 Mwrwg Road<br>Llangennech<br>Llanelli, SA14 8UA</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Ring us</h4>
+        <p style="margin:0;"><a href="tel:01554821689">01554 821689</a><br><a href="mailto:hello@llandaffhouse.co.uk">hello@llandaffhouse.co.uk</a></p>
+      </div>
+      <div class="footer-contact">
+        <h4>Compliance</h4>
+        <p style="margin:0;">CIW Ref: SIN-00009093-CGLK<br>Manager: Mrs Rhian Siddell-Owen<br>Responsible Individual: Mr John Woolford</p>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <span>Llandaff House Care Home is operated by Cathedral Care Limited (Company No. 02600036).</span>
+      <span><a href="#">Privacy policy</a> · <a href="#">Cookie policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+</script>
+</body>
+</html>

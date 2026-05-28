@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{padding:24px;background:#fff;}
+  .head{font-family:var(--font-sans);font-size:12px;font-weight:600;color:var(--fg-3);letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:18px;}
+  .sw{aspect-ratio:2/1;border-radius:var(--radius-sm);padding:10px;font-family:var(--font-sans);font-size:11px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink-900);border:1px solid var(--ink-100);}
+  .sw.dark{color:#fff;border-color:transparent;}
+  .sw b{font-weight:600;font-size:12px;}
+  .sw .hex{font-feature-settings:"tnum";opacity:.85;}
+</style></head><body>
+<p class="head">Surfaces — white with cool tints</p>
+<div class="row">
+  <div class="sw" style="background:#FFFFFF;"><b>cream-50<br><small style="font-weight:400">page bg · white</small></b><span class="hex">#FFFFFF</span></div>
+  <div class="sw" style="background:var(--cream-100);"><b>cream-100<br><small style="font-weight:400">tint</small></b><span class="hex">#F4F7F6</span></div>
+  <div class="sw" style="background:var(--cream-200);"><b>cream-200</b><span class="hex">#E6ECEA</span></div>
+  <div class="sw" style="background:var(--bone);"><b>bone<br><small style="font-weight:400">elevated · white</small></b><span class="hex">#FFFFFF</span></div>
+</div>
+<p class="head">Ink — cool greys, slight teal cast</p>
+<div class="row">
+  <div class="sw" style="background:var(--ink-100);"><b>ink-100<br><small style="font-weight:400">border</small></b><span class="hex">#E2E7E6</span></div>
+  <div class="sw" style="background:var(--ink-300);"><b>ink-300<br><small style="font-weight:400">disabled</small></b><span class="hex">#A8B1AF</span></div>
+  <div class="sw dark" style="background:var(--ink-500);"><b>ink-500<br><small style="font-weight:400">muted</small></b><span class="hex">#6B7775</span></div>
+  <div class="sw dark" style="background:var(--ink-900);"><b>ink-900<br><small style="font-weight:400">body</small></b><span class="hex">#1F2A28</span></div>
+</div>
+</body></html>

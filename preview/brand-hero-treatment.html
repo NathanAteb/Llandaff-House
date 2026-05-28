@@ -1,0 +1,42 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../kit.css">
+<style>
+  body{margin:0;padding:0;background:var(--bg);}
+  .hero{
+    position:relative;
+    height:340px;
+    background:#000 url("../assets/photos/patio.jpeg") center/cover no-repeat;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    margin:20px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(31,42,40,0) 35%, rgba(31,42,40,0.55) 100%);
+  }
+  .hero__copy{
+    position:absolute; left:32px; right:32px; bottom:28px;
+    color:var(--cream-50);
+    z-index:2;
+  }
+  .hero__copy .eyebrow{color:var(--teal-100);}
+  .hero__copy h1{
+    font-family:var(--font-serif);
+    color:var(--cream-50);
+    font-size:38px;
+    line-height:1.1;
+    margin:8px 0 0;
+    max-width:560px;
+    text-wrap:balance;
+  }
+</style></head><body>
+<div class="hero">
+  <div class="hero__copy">
+    <span class="eyebrow">A home in Llangennech</span>
+    <h1>A safe, comfortable home in the heart of the village.</h1>
+  </div>
+</div>
+</body></html>
