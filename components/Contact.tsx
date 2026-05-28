@@ -54,19 +54,18 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Map placeholder */}
-            <div
-              className="h-[220px] rounded-[12px] overflow-hidden border border-ink-100 relative flex items-center justify-center"
-              style={{
-                background:
-                  "radial-gradient(circle at 30% 40%, #E8EFE6, transparent 50%), radial-gradient(circle at 70% 60%, #EAF4F0, transparent 60%), #F4F7F6",
-              }}
-              aria-label="Map placeholder showing the location of Llandaff House"
-            >
-              <span className="inline-flex items-center gap-2 px-3.5 py-2 bg-white border border-ink-100 rounded-full font-sans text-[15px] font-semibold text-ink-900 shadow-sm">
-                <MapPin className="w-4 h-4 text-teal-600" strokeWidth={2} />
-                6 Mwrwg Road, Llangennech
-              </span>
+            {/* Google Map */}
+            <div className="h-[220px] rounded-[12px] overflow-hidden border border-ink-100">
+              <iframe
+                src="https://www.google.com/maps?q=Llandaff+House+Care+Home,+6+Mwrwg+Road,+Llangennech,+Llanelli,+SA14+8UA&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Llandaff House location on Google Maps"
+              />
             </div>
           </div>
 
