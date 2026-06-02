@@ -43,7 +43,7 @@ export function SiteHeader() {
       }`}
     >
       <div className="w-full max-w-[1200px] mx-auto px-6 flex items-center gap-8">
-        <a href="#top" aria-label="Llandaff House — home" onClick={(e) => handleNavClick(e, "#top")}>
+        <a href="/" aria-label="Llandaff House — home" onClick={(e) => { if (window.location.pathname === "/") { handleNavClick(e, "#top"); } }}>
           <Wordmark />
         </a>
 

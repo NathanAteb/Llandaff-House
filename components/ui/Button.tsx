@@ -1,3 +1,5 @@
+"use client";
+
 import { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from "react";
 import { clsx } from "clsx";
 
@@ -32,9 +34,18 @@ export function Button({ variant = "primary", className, children, ...rest }: Bu
   );
 }
 
-export function LinkButton({ variant = "primary", className, children, ...rest }: LinkButtonProps) {
+export function LinkButton({ variant = "primary", className, children, href, onClick, ...rest }: LinkButtonProps) {
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+    onClick?.(e);
+  }
+
   return (
-    <a className={clsx(base, variants[variant], className)} {...rest}>
+    <a className={clsx(base, variants[variant], className)} href={href} onClick={handleClick} {...rest}>
       {children}
     </a>
   );

@@ -1,16 +1,42 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Phone, MapPin, Mail, CheckCircle, ArrowRight } from "lucide-react";
+import { Phone, MapPin, Mail, CheckCircle, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
 import { Eyebrow } from "./ui/Eyebrow";
 import { Button } from "./ui/Button";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setSending(true);
+    setError(false);
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("cn") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("cp") as HTMLInputElement).value,
+      email: (form.elements.namedItem("ce") as HTMLInputElement).value,
+      role: (form.elements.namedItem("cr") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("cm") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -143,11 +169,27 @@ export function Contact() {
               </div>
             )}
 
+            {error && (
+              <div className="col-span-full flex items-center gap-2.5 px-6 py-4 bg-pink-100 text-danger border border-pink-300 rounded-[8px] font-sans text-[17px]">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                Something went wrong — please ring us on 01554 821689 instead.
+              </div>
+            )}
+
             {!sent && (
               <div className="col-span-full flex justify-start">
-                <Button type="submit" variant="primary">
-                  Send message
-                  <ArrowRight className="w-[18px] h-[18px]" strokeWidth={1.75} />
+                <Button type="submit" variant="primary" disabled={sending}>
+                  {sending ? (
+                    <>
+                      <Loader2 className="w-[18px] h-[18px] animate-spin" strokeWidth={1.75} />
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      Send message
+                      <ArrowRight className="w-[18px] h-[18px]" strokeWidth={1.75} />
+                    </>
+                  )}
                 </Button>
               </div>
             )}
