@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DataFast } from "@/components/DataFast";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB" style={{ scrollBehavior: "smooth" }}>
-      <body>{children}</body>
+      <body>
+        <DataFast />
+        {children}
+      </body>
     </html>
   );
 }

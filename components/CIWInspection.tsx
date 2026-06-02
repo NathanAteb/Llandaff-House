@@ -39,7 +39,7 @@ export function CIWInspection() {
                 <span className="text-ink-700 text-[15px]">
                   CIW registration ·{" "}
                   <a
-                    href="https://www.careinspectorate.wales/service/SIN-00009093-CGLK"
+                    href="https://digital.careinspectorate.wales/backend/directory/service/SIN-00009093-CGLK/LatestInspectionReport"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
