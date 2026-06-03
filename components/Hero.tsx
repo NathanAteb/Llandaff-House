@@ -7,16 +7,12 @@ export function Hero() {
     <section className="relative min-h-[640px] max-sm:min-h-[560px] flex items-end text-white overflow-hidden" id="top">
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-[#2a2a26] bg-cover bg-center"
+        className="absolute inset-0 bg-ink-900 bg-cover bg-center"
         style={{ backgroundImage: "url(/photos/patio.jpeg)" }}
       />
       {/* Gradient overlay */}
       <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(31,42,40,0.7) 0%, rgba(31,42,40,0.64) 28%, rgba(31,42,40,0.7) 56%, rgba(31,42,40,0.92) 100%)",
-        }}
+        className="absolute inset-0 bg-linear-to-b from-ink-900/70 via-ink-900/64 to-ink-900/92"
       />
 
       {/* CIW badge — desktop only (top-right) */}

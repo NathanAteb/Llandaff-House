@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
+import { Lora, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-lora",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://llandaffhouse.co.uk"),
@@ -23,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" style={{ scrollBehavior: "smooth" }}>
+    <html lang="en-GB" className={`${lora.variable} ${inter.variable}`}>
       <body>
         <Script
           defer

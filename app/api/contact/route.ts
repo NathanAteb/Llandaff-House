@@ -6,7 +6,13 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { name, phone, email, role, message } = body;
+  const { name, phone, email, role, message, website } = body;
+
+  // Honeypot check
+  if (website) {
+    console.warn("Honeypot triggered by bot.");
+    return NextResponse.json({ ok: true });
+  }
 
   if (!name || !phone) {
     return NextResponse.json(

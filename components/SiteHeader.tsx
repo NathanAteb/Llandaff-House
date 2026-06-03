@@ -3,6 +3,7 @@
 import { Phone, Menu, X } from "lucide-react";
 import { Wordmark } from "./Wordmark";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -26,11 +27,13 @@ export function SiteHeader() {
   }, []);
 
   function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-    e.preventDefault();
-    setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      setMenuOpen(false);
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }
 
@@ -43,9 +46,13 @@ export function SiteHeader() {
       }`}
     >
       <div className="w-full max-w-[1200px] mx-auto px-6 flex items-center gap-8">
-        <a href="/" aria-label="Llandaff House — home" onClick={(e) => { if (window.location.pathname === "/") { handleNavClick(e, "#top"); } }}>
+        <Link 
+          href="/" 
+          aria-label="Llandaff House — home" 
+          onClick={(e) => { if (window.location.pathname === "/") { handleNavClick(e, "#top"); } }}
+        >
           <Wordmark />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 ml-auto" aria-label="Primary">

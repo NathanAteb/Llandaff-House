@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Cookie Policy · Llandaff House Care Home",
@@ -13,10 +14,10 @@ export default function CookiePage() {
       <SiteHeader />
       <main className="py-24 max-md:py-16">
         <div className="max-w-[720px] mx-auto px-6">
-          <a href="/" className="inline-flex items-center gap-1.5 font-sans text-[15px] font-medium text-teal-600 no-underline hover:text-teal-700 mb-6">
+          <Link href="/" className="inline-flex items-center gap-1.5 font-sans text-[15px] font-medium text-teal-600 no-underline hover:text-teal-700 mb-6">
             <ArrowLeft className="w-4 h-4" strokeWidth={2} />
             Back to home
-          </a>
+          </Link>
           <h1>Cookie Policy</h1>
           <p className="text-ink-500 text-[15px] mb-8">Last updated: June 2026</p>
 

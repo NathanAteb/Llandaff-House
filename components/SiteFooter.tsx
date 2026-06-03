@@ -1,4 +1,5 @@
 import { Wordmark } from "./Wordmark";
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
@@ -6,9 +7,9 @@ export function SiteFooter() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-[1.4fr_1fr_1fr_1fr] max-sm:grid-cols-2 gap-8 mb-12">
           <div>
-            <a href="/" className="inline-flex mb-4">
+            <Link href="/" className="inline-flex mb-4">
               <Wordmark variant="white" />
-            </a>
+            </Link>
             <p className="mt-3.5 text-white/70 text-[15px] max-w-[32ch] m-0">
               A safe, comfortable home in the heart of Llangennech — caring
               since 1991.
@@ -63,13 +64,13 @@ export function SiteFooter() {
             (Company No. 02600036).
           </span>
           <span>
-            <a href="/privacy" className="!text-white underline">
+            <Link href="/privacy" className="!text-white underline">
               Privacy policy
-            </a>{" "}
+            </Link>{" "}
             ·{" "}
-            <a href="/cookies" className="!text-white underline">
+            <Link href="/cookies" className="!text-white underline">
               Cookie policy
-            </a>
+            </Link>
           </span>
         </div>
       </div>

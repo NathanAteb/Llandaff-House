@@ -4,6 +4,8 @@ import { useState, FormEvent } from "react";
 import { Phone, MapPin, Mail, CheckCircle, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
 import { Eyebrow } from "./ui/Eyebrow";
 import { Button } from "./ui/Button";
+import { Field } from "./ui/Field";
+import { Card } from "./ui/Card";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
@@ -17,11 +19,12 @@ export function Contact() {
 
     const form = e.currentTarget;
     const data = {
-      name: (form.elements.namedItem("cn") as HTMLInputElement).value,
-      phone: (form.elements.namedItem("cp") as HTMLInputElement).value,
-      email: (form.elements.namedItem("ce") as HTMLInputElement).value,
-      role: (form.elements.namedItem("cr") as HTMLSelectElement).value,
-      message: (form.elements.namedItem("cm") as HTMLTextAreaElement).value,
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      role: (form.elements.namedItem("role") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      website: (form.elements.namedItem("website") as HTMLInputElement).value, // Honeypot
     };
 
     try {
@@ -96,103 +99,66 @@ export function Contact() {
           </div>
 
           {/* Form */}
-          <form
-            className="bg-white border border-ink-100 rounded-[18px] p-8 max-md:p-6 grid grid-cols-2 max-md:grid-cols-1 gap-4"
-            onSubmit={handleSubmit}
-          >
-            {!sent && (
-              <>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="cn" className="font-sans text-[15px] font-semibold text-ink-900">
-                    Your name <span className="text-danger ml-0.5">*</span>
-                  </label>
-                  <input
-                    id="cn"
-                    type="text"
-                    required
-                    className="font-sans text-[17px] text-ink-900 bg-white border border-[#D6CDB6] rounded-[8px] px-3.5 py-3 w-full transition-all duration-150 focus:outline-none focus:border-teal-600 focus:ring-[3px] focus:ring-teal-100"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="cp" className="font-sans text-[15px] font-semibold text-ink-900">
-                    Phone <span className="text-danger ml-0.5">*</span>
-                  </label>
-                  <input
-                    id="cp"
-                    type="tel"
-                    required
-                    placeholder="01554 821689"
-                    className="font-sans text-[17px] text-ink-900 bg-white border border-[#D6CDB6] rounded-[8px] px-3.5 py-3 w-full transition-all duration-150 focus:outline-none focus:border-teal-600 focus:ring-[3px] focus:ring-teal-100"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="ce" className="font-sans text-[15px] font-semibold text-ink-900">
-                    Email
-                  </label>
-                  <input
-                    id="ce"
-                    type="email"
-                    placeholder="you@example.co.uk"
-                    className="font-sans text-[17px] text-ink-900 bg-white border border-[#D6CDB6] rounded-[8px] px-3.5 py-3 w-full transition-all duration-150 focus:outline-none focus:border-teal-600 focus:ring-[3px] focus:ring-teal-100"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="cr" className="font-sans text-[15px] font-semibold text-ink-900">
-                    You are a…
-                  </label>
-                  <select
-                    id="cr"
-                    className="font-sans text-[17px] text-ink-900 bg-white border border-[#D6CDB6] rounded-[8px] px-3.5 py-3 w-full pr-9 appearance-none transition-all duration-150 focus:outline-none focus:border-teal-600 focus:ring-[3px] focus:ring-teal-100"
-                  >
+          <form onSubmit={handleSubmit}>
+            <Card className="grid grid-cols-2 max-md:grid-cols-1 gap-4">
+              {!sent && (
+                <>
+                  {/* Honeypot field */}
+                  <div className="hidden" aria-hidden="true">
+                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  </div>
+
+                  <Field id="name" name="name" label="Your name" required />
+                  <Field id="phone" name="phone" label="Phone" type="tel" required placeholder="01554 821689" />
+                  <Field id="email" name="email" label="Email" type="email" placeholder="you@example.co.uk" />
+                  <Field id="role" name="role" label="You are a…" as="select">
                     <option>Family member</option>
                     <option>Health professional</option>
                     <option>Other</option>
-                  </select>
-                </div>
-                <div className="flex flex-col gap-1.5 col-span-full">
-                  <label htmlFor="cm" className="font-sans text-[15px] font-semibold text-ink-900">
-                    Message
-                  </label>
-                  <textarea
-                    id="cm"
+                  </Field>
+                  <Field
+                    id="message"
+                    name="message"
+                    label="Message"
+                    as="textarea"
+                    className="col-span-full"
                     placeholder="Tell us a little about your situation — we'll ring you back."
-                    className="font-sans text-[17px] text-ink-900 bg-white border border-[#D6CDB6] rounded-[8px] px-3.5 py-3 w-full min-h-[120px] resize-y leading-[1.55] transition-all duration-150 focus:outline-none focus:border-teal-600 focus:ring-[3px] focus:ring-teal-100"
                   />
+                </>
+              )}
+
+              {sent && (
+                <div className="col-span-full flex items-center gap-2.5 px-6 py-4 bg-teal-50 text-teal-700 border border-teal-200 rounded-[8px] font-sans text-[17px]">
+                  <CheckCircle className="w-5 h-5 shrink-0" />
+                  Thank you — we&apos;ll be in touch within one working day.
                 </div>
-              </>
-            )}
+              )}
 
-            {sent && (
-              <div className="col-span-full flex items-center gap-2.5 px-6 py-4 bg-teal-50 text-teal-700 border border-teal-200 rounded-[8px] font-sans text-[17px]">
-                <CheckCircle className="w-5 h-5 shrink-0" />
-                Thank you — we&apos;ll be in touch within one working day.
-              </div>
-            )}
+              {error && (
+                <div className="col-span-full flex items-center gap-2.5 px-6 py-4 bg-pink-100 text-danger border border-pink-300 rounded-[8px] font-sans text-[17px]">
+                  <AlertCircle className="w-5 h-5 shrink-0" />
+                  Something went wrong — please ring us on 01554 821689 instead.
+                </div>
+              )}
 
-            {error && (
-              <div className="col-span-full flex items-center gap-2.5 px-6 py-4 bg-pink-100 text-danger border border-pink-300 rounded-[8px] font-sans text-[17px]">
-                <AlertCircle className="w-5 h-5 shrink-0" />
-                Something went wrong — please ring us on 01554 821689 instead.
-              </div>
-            )}
-
-            {!sent && (
-              <div className="col-span-full flex justify-start">
-                <Button type="submit" variant="primary" disabled={sending}>
-                  {sending ? (
-                    <>
-                      <Loader2 className="w-[18px] h-[18px] animate-spin" strokeWidth={1.75} />
-                      Sending…
-                    </>
-                  ) : (
-                    <>
-                      Send message
-                      <ArrowRight className="w-[18px] h-[18px]" strokeWidth={1.75} />
-                    </>
-                  )}
-                </Button>
-              </div>
-            )}
+              {!sent && (
+                <div className="col-span-full flex justify-start">
+                  <Button type="submit" variant="primary" disabled={sending}>
+                    {sending ? (
+                      <>
+                        <Loader2 className="w-[18px] h-[18px] animate-spin" strokeWidth={1.75} />
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        Send message
+                        <ArrowRight className="w-[18px] h-[18px]" strokeWidth={1.75} />
+                      </>
+                    )}
+                  </Button>
+                </div>
+              )}
+            </Card>
           </form>
         </div>
       </div>

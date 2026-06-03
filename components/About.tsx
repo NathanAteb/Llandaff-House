@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Home, Flower2, MapPin, Cat, Users, CalendarHeart } from "lucide-react";
 import { Eyebrow } from "./ui/Eyebrow";
+import { Fact } from "./ui/Fact";
 import { ReactNode } from "react";
 
 const facts: { icon: ReactNode; title: string; sub: string }[] = [
@@ -54,16 +55,7 @@ export function About() {
 
         <div className="mt-12 grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
           {facts.map((f) => (
-            <div
-              key={f.title}
-              className="bg-white border border-ink-100 rounded-[12px] px-6 py-5 flex items-start gap-4"
-            >
-              <span className="shrink-0 text-teal-600">{f.icon}</span>
-              <div className="font-sans text-[17px] text-ink-900 leading-snug">
-                <strong className="block font-semibold">{f.title}</strong>
-                <small className="block text-[15px] text-ink-500 mt-0.5">{f.sub}</small>
-              </div>
-            </div>
+            <Fact key={f.title} {...f} />
           ))}
         </div>
       </div>
