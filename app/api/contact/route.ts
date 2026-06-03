@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
   const { error } = await resend.emails.send({
     from: "Llandaff House <hello@notify.ateb.ai>",
-    to: "hello@llandaffhouse.co.uk",
+    to: "llandaffhouse@aol.com",
     replyTo: email || undefined,
     subject,
     html,

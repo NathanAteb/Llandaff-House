@@ -63,7 +63,7 @@ export default function PrivacyPage() {
           </ul>
           <p>
             To exercise any of these rights, please contact us at{" "}
-            <a href="mailto:hello@llandaffhouse.co.uk">hello@llandaffhouse.co.uk</a>{" "}
+            <a href="mailto:llandaffhouse@aol.com">llandaffhouse@aol.com</a>{" "}
             or ring us on{" "}
             <a href="tel:01554821689">01554 821689</a>.
           </p>

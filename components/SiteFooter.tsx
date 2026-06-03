@@ -37,8 +37,8 @@ export function SiteFooter() {
                 01554 821689
               </a>
               <br />
-              <a href="mailto:hello@llandaffhouse.co.uk" className="!text-white underline">
-                hello@llandaffhouse.co.uk
+              <a href="mailto:llandaffhouse@aol.com" className="!text-white underline">
+                llandaffhouse@aol.com
               </a>
             </p>
           </div>

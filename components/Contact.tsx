@@ -74,8 +74,8 @@ export function Contact() {
             <div className="flex gap-3.5 items-start font-sans text-[17px] text-ink-900 leading-[1.4]">
               <Mail className="w-[22px] h-[22px] text-teal-600 shrink-0 mt-0.5" strokeWidth={1.75} />
               <div>
-                <a href="mailto:hello@llandaffhouse.co.uk" className="text-ink-900 no-underline hover:text-teal-600">
-                  hello@llandaffhouse.co.uk
+                <a href="mailto:llandaffhouse@aol.com" className="text-ink-900 no-underline hover:text-teal-600">
+                  llandaffhouse@aol.com
                 </a>
               </div>
             </div>
