@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DataFast } from "@/components/DataFast";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,7 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en-GB" style={{ scrollBehavior: "smooth" }}>
       <body>
-        <DataFast />
+        <Script
+          defer
+          data-website-id="dfid_Nc0jpX0RiMgflrx2oEO1G"
+          data-domain="llandaffhouse.co.uk"
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
